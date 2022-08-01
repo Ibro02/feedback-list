@@ -1,11 +1,13 @@
-import PropTypes from 'prop-types'
+import {useContext} from 'react'
+import FeedbackContext from '../context/FeedbackContext';
 
-function FeedbackStats({feedback}) {
+function FeedbackStats() {
+  const {feedback} = useContext(FeedbackContext)
     let rating = feedback.reduce((acc, cur)=>{
    return (acc + cur.rating);
    
-},0)
-rating = rating.toFixed(1);
+  },0)
+  rating = +rating.toFixed(1);
   return (
     <div className='feedback-stats'>
    <h4>Rewiew: {feedback.length}</h4>
